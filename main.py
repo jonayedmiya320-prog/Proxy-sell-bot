@@ -1,5 +1,5 @@
 # ============================================================
-# ЁЯдЦ SpyX Sell Proxy Bot - Single File Version
+# 🤖 SpyX Sell Proxy Bot - Single File Version
 # Author: @sadhin8miya
 # Deploy: Railway / Render
 # ============================================================
@@ -19,11 +19,11 @@ from telegram.ext import (
 from telegram.constants import ParseMode
 
 # ============================================================
-# тЪЩя╕П CONFIGURATION тАФ ржПржЦрж╛ржирзЗ ржЖржкржирж╛рж░ рждржерзНржп ржжрж┐ржи
+# ⚙️ CONFIGURATION — এখানে আপনার তথ্য দিন
 # ============================================================
 
-BOT_TOKEN   = os.environ.get("BOT_TOKEN", "8777803602:AAGT2aXEtxjQ6op9LyvGrs6gboJuB8xzfxE")
-ADMIN_ID    = int(os.environ.get("ADMIN_ID", "7095358778"))  # ржЖржкржирж╛рж░ Telegram ID
+BOT_TOKEN   = os.environ.get("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
+ADMIN_ID    = int(os.environ.get("ADMIN_ID", "123456789"))  # আপনার Telegram ID
 SUPPORT_USERNAME = "@sadhin8miya"
 BOT_NAME    = "SpyX Proxy Bot"
 CURRENCY    = "BDT"
@@ -39,7 +39,7 @@ DEPOSITS_FILE = "data/deposits.json"
 SETTINGS_FILE = "data/settings.json"
 
 # ============================================================
-# ЁЯТ╛ DATABASE тАФ JSON Functions
+# 💾 DATABASE — JSON Functions
 # ============================================================
 
 def init_db():
@@ -55,9 +55,9 @@ def init_db():
             "nagad": "",
             "referral_commission": 10,
             "welcome_message": (
-                f"Welcome to {BOT_NAME}! ЁЯЪА\n\n"
+                f"Welcome to {BOT_NAME}! 🚀\n\n"
                 "We provide premium VPN accounts & proxies at the best prices.\n\n"
-                "тЪб High Speed\nЁЯФТ Secure & Stable\nтЬЕ Instant Delivery\nЁЯТм 24/7 Support"
+                "⚡ High Speed\n🔒 Secure & Stable\n✅ Instant Delivery\n💬 24/7 Support"
             )
         }
     }
@@ -348,7 +348,7 @@ def get_stats():
 
 
 # ============================================================
-# ЁЯЫая╕П HELPERS
+# 🛠️ HELPERS
 # ============================================================
 
 def format_date(iso_date):
@@ -371,62 +371,62 @@ def is_expired(expiry_date):
 
 def format_order_status(expiry_date):
     if not expiry_date:
-        return "тЬЕ Active"
-    return "тЪая╕П Expired" if is_expired(expiry_date) else "тЬЕ Active"
+        return "✅ Active"
+    return "⚠️ Expired" if is_expired(expiry_date) else "✅ Active"
 
 
 def format_order(order):
     status     = format_order_status(order.get("expiry_date"))
-    cat_emoji  = "ЁЯФТ" if order.get("category") == "vpn" else "ЁЯМР"
+    cat_emoji  = "🔒" if order.get("category") == "vpn" else "🌐"
     expiry     = format_date(order.get("expiry_date", ""))
     credential = order.get("credential", "")
     parts      = credential.split(":")
 
     if len(parts) == 2:
-        cred_text = f"ЁЯСд Username: `{parts[0]}`\nЁЯФС Password: `{parts[1]}`"
+        cred_text = f"👤 Username: `{parts[0]}`\n🔑 Password: `{parts[1]}`"
     elif len(parts) >= 3:
-        cred_text = f"ЁЯМР Proxy: `{credential}`"
+        cred_text = f"🌐 Proxy: `{credential}`"
     else:
-        cred_text = f"ЁЯУЛ Details: `{credential}`"
+        cred_text = f"📋 Details: `{credential}`"
 
     return (
         f"{cat_emoji} *{order.get('product_name', 'N/A')}*\n"
-        f"ЁЯЖФ Order: `{order.get('order_id')}`\n"
-        f"ЁЯУЕ Expired: {expiry}\n"
-        f"тЪб Status: {status}\n"
+        f"🆔 Order: `{order.get('order_id')}`\n"
+        f"📅 Expired: {expiry}\n"
+        f"⚡ Status: {status}\n"
         f"{cred_text}"
     )
 
 
 def format_user_info(user):
-    status   = "ЁЯЪл Banned" if user.get("is_banned") else "тЬЕ Active"
+    status   = "🚫 Banned" if user.get("is_banned") else "✅ Active"
     username = f"@{user['username']}" if user.get("username") else "No username"
     return (
-        f"ЁЯСд *User Info*\n"
-        f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-        f"ЁЯЖФ ID: `{user['id']}`\n"
-        f"ЁЯСд Name: {user.get('full_name', 'N/A')}\n"
-        f"ЁЯУ▒ Username: {username}\n"
-        f"ЁЯТ░ Balance: {user.get('balance', 0)} BDT\n"
-        f"ЁЯЫТ Total Orders: {user.get('total_orders', 0)}\n"
-        f"ЁЯСе Referrals: {user.get('referral_count', 0)}\n"
-        f"ЁЯТ╕ Total Earned: {user.get('total_earned', 0)} BDT\n"
-        f"ЁЯУЕ Joined: {format_date(user.get('joined_at', ''))}\n"
-        f"тЪб Status: {status}"
+        f"👤 *User Info*\n"
+        f"━━━━━━━━━━━━━━━\n"
+        f"🆔 ID: `{user['id']}`\n"
+        f"👤 Name: {user.get('full_name', 'N/A')}\n"
+        f"📱 Username: {username}\n"
+        f"💰 Balance: {user.get('balance', 0)} BDT\n"
+        f"🛒 Total Orders: {user.get('total_orders', 0)}\n"
+        f"👥 Referrals: {user.get('referral_count', 0)}\n"
+        f"💸 Total Earned: {user.get('total_earned', 0)} BDT\n"
+        f"📅 Joined: {format_date(user.get('joined_at', ''))}\n"
+        f"⚡ Status: {status}"
     )
 
 
 def format_deposit(deposit):
     return (
-        f"ЁЯТ│ *Deposit Request*\n"
-        f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-        f"ЁЯЖФ Dep ID: `{deposit.get('dep_id')}`\n"
-        f"ЁЯСд User: @{deposit.get('username', 'N/A')} (`{deposit.get('user_id')}`)\n"
-        f"ЁЯТ░ Amount: *{deposit.get('amount')} BDT*\n"
-        f"ЁЯз╛ TrxID: `{deposit.get('trx_id')}`\n"
-        f"ЁЯУ▒ Phone: `{deposit.get('phone')}`\n"
-        f"ЁЯУЕ Time: {format_date(deposit.get('created_at', ''))}\n"
-        f"тЪб Status: {deposit.get('status', 'pending').upper()}"
+        f"💳 *Deposit Request*\n"
+        f"━━━━━━━━━━━━━━━\n"
+        f"🆔 Dep ID: `{deposit.get('dep_id')}`\n"
+        f"👤 User: @{deposit.get('username', 'N/A')} (`{deposit.get('user_id')}`)\n"
+        f"💰 Amount: *{deposit.get('amount')} BDT*\n"
+        f"🧾 TrxID: `{deposit.get('trx_id')}`\n"
+        f"📱 Phone: `{deposit.get('phone')}`\n"
+        f"📅 Time: {format_date(deposit.get('created_at', ''))}\n"
+        f"⚡ Status: {deposit.get('status', 'pending').upper()}"
     )
 
 
@@ -475,35 +475,35 @@ def is_admin(user_id):
 
 
 # ============================================================
-# тМия╕П KEYBOARDS
+# ⌨️ KEYBOARDS
 # ============================================================
 
 def main_menu_kb():
     return ReplyKeyboardMarkup([
-        ["ЁЯСд My Account",    "ЁЯТ░ Check Balance"],
-        ["ЁЯФТ Buy VPN",       "ЁЯМР Buy Proxy"],
-        ["ЁЯУЛ My Orders",     "ЁЯТ│ Deposit Money"],
-        ["ЁЯОБ Referral",      "ЁЯОз Support"]
+        ["👤 My Account",    "💰 Check Balance"],
+        ["🔒 Buy VPN",       "🌐 Buy Proxy"],
+        ["📋 My Orders",     "💳 Deposit Money"],
+        ["🎁 Referral",      "🎧 Support"]
     ], resize_keyboard=True)
 
 
 def admin_menu_kb():
     return ReplyKeyboardMarkup([
-        ["ЁЯУж Products",        "ЁЯУБ Stock"],
-        ["ЁЯУЛ Pending Deposits","ЁЯСе Users"],
-        ["ЁЯУв Broadcast",       "ЁЯСд Personal Message"],
-        ["ЁЯТ░ Payment Settings","ЁЯОБ Referral Settings"],
-        ["ЁЯУК Statistics",      "ЁЯФЩ User Menu"]
+        ["📦 Products",        "📁 Stock"],
+        ["📋 Pending Deposits","👥 Users"],
+        ["📢 Broadcast",       "👤 Personal Message"],
+        ["💰 Payment Settings","🎁 Referral Settings"],
+        ["📊 Statistics",      "🔙 User Menu"]
     ], resize_keyboard=True)
 
 
 def cancel_kb():
-    return ReplyKeyboardMarkup([["тЭМ Cancel"]], resize_keyboard=True)
+    return ReplyKeyboardMarkup([["❌ Cancel"]], resize_keyboard=True)
 
 
 def support_inline():
     return InlineKeyboardMarkup([[
-        InlineKeyboardButton("ЁЯОз Contact Support", url=f"https://t.me/{SUPPORT_USERNAME.lstrip('@')}")
+        InlineKeyboardButton("🎧 Contact Support", url=f"https://t.me/{SUPPORT_USERNAME.lstrip('@')}")
     ]])
 
 
@@ -512,110 +512,110 @@ def products_inline(products, category):
     for pid, product in products.items():
         stock = get_stock_count(pid)
         stock_text = f" ({stock} left)" if stock > 0 else " (Out of stock)"
-        emoji = "ЁЯФТ" if category == "vpn" else "ЁЯМР"
+        emoji = "🔒" if category == "vpn" else "🌐"
         keyboard.append([InlineKeyboardButton(
-            f"{emoji} {product['name']} тАФ {product['price']} {CURRENCY}{stock_text}",
+            f"{emoji} {product['name']} — {product['price']} {CURRENCY}{stock_text}",
             callback_data=f"buy_{pid}"
         )])
-    keyboard.append([InlineKeyboardButton("ЁЯФЩ Back", callback_data="back_main")])
+    keyboard.append([InlineKeyboardButton("🔙 Back", callback_data="back_main")])
     return InlineKeyboardMarkup(keyboard)
 
 
 def confirm_purchase_inline(product_id):
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("тЬЕ Confirm Purchase", callback_data=f"confirm_buy_{product_id}")],
-        [InlineKeyboardButton("тЭМ Cancel",           callback_data="back_main")]
+        [InlineKeyboardButton("✅ Confirm Purchase", callback_data=f"confirm_buy_{product_id}")],
+        [InlineKeyboardButton("❌ Cancel",           callback_data="back_main")]
     ])
 
 
 def orders_pagination_inline(page, total_pages):
     nav = []
     if page > 1:
-        nav.append(InlineKeyboardButton("тмЕя╕П Prev", callback_data=f"orders_page_{page-1}"))
-    nav.append(InlineKeyboardButton(f"ЁЯУД {page}/{total_pages}", callback_data="noop"))
+        nav.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"orders_page_{page-1}"))
+    nav.append(InlineKeyboardButton(f"📄 {page}/{total_pages}", callback_data="noop"))
     if page < total_pages:
-        nav.append(InlineKeyboardButton("Next тЮбя╕П", callback_data=f"orders_page_{page+1}"))
+        nav.append(InlineKeyboardButton("Next ➡️", callback_data=f"orders_page_{page+1}"))
     return InlineKeyboardMarkup([nav]) if nav else None
 
 
 def admin_deposit_inline(dep_id):
     return InlineKeyboardMarkup([[
-        InlineKeyboardButton("тЬЕ Approve", callback_data=f"approve_dep_{dep_id}"),
-        InlineKeyboardButton("тЭМ Reject",  callback_data=f"reject_dep_{dep_id}")
+        InlineKeyboardButton("✅ Approve", callback_data=f"approve_dep_{dep_id}"),
+        InlineKeyboardButton("❌ Reject",  callback_data=f"reject_dep_{dep_id}")
     ]])
 
 
 def admin_deposits_pagination_inline(page, total_pages):
     nav = []
     if page > 1:
-        nav.append(InlineKeyboardButton("тмЕя╕П Prev", callback_data=f"deps_page_{page-1}"))
-    nav.append(InlineKeyboardButton(f"ЁЯУД {page}/{total_pages}", callback_data="noop"))
+        nav.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"deps_page_{page-1}"))
+    nav.append(InlineKeyboardButton(f"📄 {page}/{total_pages}", callback_data="noop"))
     if page < total_pages:
-        nav.append(InlineKeyboardButton("Next тЮбя╕П", callback_data=f"deps_page_{page+1}"))
+        nav.append(InlineKeyboardButton("Next ➡️", callback_data=f"deps_page_{page+1}"))
     keyboard = [nav] if nav else []
-    keyboard.append([InlineKeyboardButton("ЁЯУе Download .txt", callback_data="download_deposits")])
+    keyboard.append([InlineKeyboardButton("📥 Download .txt", callback_data="download_deposits")])
     return InlineKeyboardMarkup(keyboard)
 
 
 def admin_users_inline(page, total_pages, filter_type="all"):
     nav = []
     if page > 1:
-        nav.append(InlineKeyboardButton("тмЕя╕П Prev", callback_data=f"users_{filter_type}_{page-1}"))
-    nav.append(InlineKeyboardButton(f"ЁЯУД {page}/{total_pages}", callback_data="noop"))
+        nav.append(InlineKeyboardButton("⬅️ Prev", callback_data=f"users_{filter_type}_{page-1}"))
+    nav.append(InlineKeyboardButton(f"📄 {page}/{total_pages}", callback_data="noop"))
     if page < total_pages:
-        nav.append(InlineKeyboardButton("Next тЮбя╕П", callback_data=f"users_{filter_type}_{page+1}"))
+        nav.append(InlineKeyboardButton("Next ➡️", callback_data=f"users_{filter_type}_{page+1}"))
     keyboard = [nav] if nav else []
-    keyboard.append([InlineKeyboardButton("ЁЯУе Download .txt", callback_data=f"download_users_{filter_type}")])
+    keyboard.append([InlineKeyboardButton("📥 Download .txt", callback_data=f"download_users_{filter_type}")])
     return InlineKeyboardMarkup(keyboard)
 
 
 def admin_user_actions_inline(user_id, is_banned):
-    ban_text = "тЬЕ Unban" if is_banned else "ЁЯЪл Ban"
+    ban_text = "✅ Unban" if is_banned else "🚫 Ban"
     ban_cb   = f"unban_{user_id}" if is_banned else f"ban_{user_id}"
     return InlineKeyboardMarkup([
         [InlineKeyboardButton(ban_text, callback_data=ban_cb)],
-        [InlineKeyboardButton("ЁЯТ░ Add Balance",   callback_data=f"add_bal_{user_id}"),
-         InlineKeyboardButton("ЁЯТ╕ Deduct Balance", callback_data=f"deduct_bal_{user_id}")],
-        [InlineKeyboardButton("ЁЯУЛ View Orders",   callback_data=f"user_orders_{user_id}")],
-        [InlineKeyboardButton("тЬЙя╕П Send Message",  callback_data=f"msg_user_{user_id}")]
+        [InlineKeyboardButton("💰 Add Balance",   callback_data=f"add_bal_{user_id}"),
+         InlineKeyboardButton("💸 Deduct Balance", callback_data=f"deduct_bal_{user_id}")],
+        [InlineKeyboardButton("📋 View Orders",   callback_data=f"user_orders_{user_id}")],
+        [InlineKeyboardButton("✉️ Send Message",  callback_data=f"msg_user_{user_id}")]
     ])
 
 
 def admin_products_list_inline(products):
     keyboard = []
     for pid, p in products.items():
-        status = "ЁЯЯв" if p.get("is_active") else "ЁЯФ┤"
-        cat    = "ЁЯФТ" if p.get("category") == "vpn" else "ЁЯМР"
+        status = "🟢" if p.get("is_active") else "🔴"
+        cat    = "🔒" if p.get("category") == "vpn" else "🌐"
         keyboard.append([InlineKeyboardButton(
-            f"{status} {cat} {p['name']} тАФ {p['price']} {CURRENCY}",
+            f"{status} {cat} {p['name']} — {p['price']} {CURRENCY}",
             callback_data=f"view_prod_{pid}"
         )])
-    keyboard.append([InlineKeyboardButton("тЮХ Add New Product", callback_data="add_product")])
+    keyboard.append([InlineKeyboardButton("➕ Add New Product", callback_data="add_product")])
     return InlineKeyboardMarkup(keyboard)
 
 
 def admin_product_actions_inline(product_id, is_active):
-    status_text = "ЁЯФ┤ Disable" if is_active else "ЁЯЯв Enable"
+    status_text = "🔴 Disable" if is_active else "🟢 Enable"
     status_cb   = f"disable_prod_{product_id}" if is_active else f"enable_prod_{product_id}"
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("тЬПя╕П Edit Name",     callback_data=f"edit_prod_name_{product_id}"),
-         InlineKeyboardButton("ЁЯТ▓ Edit Price",    callback_data=f"edit_prod_price_{product_id}")],
-        [InlineKeyboardButton("ЁЯУЕ Edit Duration", callback_data=f"edit_prod_duration_{product_id}"),
+        [InlineKeyboardButton("✏️ Edit Name",     callback_data=f"edit_prod_name_{product_id}"),
+         InlineKeyboardButton("💲 Edit Price",    callback_data=f"edit_prod_price_{product_id}")],
+        [InlineKeyboardButton("📅 Edit Duration", callback_data=f"edit_prod_duration_{product_id}"),
          InlineKeyboardButton(status_text,        callback_data=status_cb)],
-        [InlineKeyboardButton("ЁЯЧСя╕П Delete",        callback_data=f"delete_prod_{product_id}")]
+        [InlineKeyboardButton("🗑️ Delete",        callback_data=f"delete_prod_{product_id}")]
     ])
 
 
 def product_category_inline():
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("ЁЯФТ VPN",   callback_data="addprod_vpn"),
-         InlineKeyboardButton("ЁЯМР Proxy", callback_data="addprod_proxy")],
-        [InlineKeyboardButton("тЭМ Cancel", callback_data="back_main")]
+        [InlineKeyboardButton("🔒 VPN",   callback_data="addprod_vpn"),
+         InlineKeyboardButton("🌐 Proxy", callback_data="addprod_proxy")],
+        [InlineKeyboardButton("❌ Cancel", callback_data="back_main")]
     ])
 
 
 # ============================================================
-# ЁЯСд USER HANDLERS
+# 👤 USER HANDLERS
 # ============================================================
 
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -632,13 +632,13 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     db_user = create_user(user.id, user.username, user.full_name, referred_by)
     if db_user.get("is_banned"):
-        await update.message.reply_text("ЁЯЪл You have been banned from using this bot.")
+        await update.message.reply_text("🚫 You have been banned from using this bot.")
         return
 
     settings = get_settings()
     welcome  = settings.get("welcome_message", f"Welcome to {BOT_NAME}!")
     await update.message.reply_text(
-        f"ЁЯСЛ *{welcome}*",
+        f"👋 *{welcome}*",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=main_menu_kb()
     )
@@ -648,20 +648,20 @@ async def show_my_account(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     user    = get_user(user_id)
     if not user:
-        await update.message.reply_text("тЭМ Account not found. Please /start again.")
+        await update.message.reply_text("❌ Account not found. Please /start again.")
         return
     username = f"@{user['username']}" if user.get("username") else "No username"
     ref_link = f"https://t.me/{context.bot.username}?start=ref{user_id}"
     await update.message.reply_text(
-        f"ЁЯСд *My Account*\n"
-        f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-        f"ЁЯЖФ ID: `{user['id']}`\n"
-        f"ЁЯСд Username: {username}\n"
-        f"ЁЯТ░ Balance: *{user.get('balance', 0)} {CURRENCY}*\n"
-        f"ЁЯЫТ Total Orders: {user.get('total_orders', 0)}\n"
-        f"ЁЯСе Referrals: {user.get('referral_count', 0)}\n"
-        f"ЁЯУЕ Joined: {format_date(user.get('joined_at', ''))}\n\n"
-        f"ЁЯФЧ Your Referral Link:\n`{ref_link}`",
+        f"👤 *My Account*\n"
+        f"━━━━━━━━━━━━━━━\n"
+        f"🆔 ID: `{user['id']}`\n"
+        f"👤 Username: {username}\n"
+        f"💰 Balance: *{user.get('balance', 0)} {CURRENCY}*\n"
+        f"🛒 Total Orders: {user.get('total_orders', 0)}\n"
+        f"👥 Referrals: {user.get('referral_count', 0)}\n"
+        f"📅 Joined: {format_date(user.get('joined_at', ''))}\n\n"
+        f"🔗 Your Referral Link:\n`{ref_link}`",
         parse_mode=ParseMode.MARKDOWN
     )
 
@@ -669,10 +669,10 @@ async def show_my_account(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def show_check_balance(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = get_user(update.effective_user.id)
     if not user:
-        await update.message.reply_text("тЭМ Account not found.")
+        await update.message.reply_text("❌ Account not found.")
         return
     await update.message.reply_text(
-        f"ЁЯТ░ *Your Balance*\n\nAvailable: *{user.get('balance', 0)} {CURRENCY}*",
+        f"💰 *Your Balance*\n\nAvailable: *{user.get('balance', 0)} {CURRENCY}*",
         parse_mode=ParseMode.MARKDOWN
     )
 
@@ -684,7 +684,7 @@ async def show_my_orders(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def show_orders_page(update, context, user_id, page=1, edit=False):
     orders, total, total_pages = get_user_orders(user_id, page)
     if not orders:
-        text = "ЁЯУЛ *My Orders*\n\nYou have no orders yet."
+        text = "📋 *My Orders*\n\nYou have no orders yet."
         if edit and update.callback_query:
             await update.callback_query.edit_message_text(text, parse_mode=ParseMode.MARKDOWN)
         else:
@@ -692,7 +692,7 @@ async def show_orders_page(update, context, user_id, page=1, edit=False):
             await msg.reply_text(text, parse_mode=ParseMode.MARKDOWN)
         return
 
-    text   = f"ЁЯУЛ *My Orders* тАФ Page {page}/{total_pages}\nтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n\n"
+    text   = f"📋 *My Orders* — Page {page}/{total_pages}\n━━━━━━━━━━━━━━━\n\n"
     text  += "\n\n".join(format_order(o) for o in orders)
     markup = orders_pagination_inline(page, total_pages) if total_pages > 1 else None
 
@@ -710,24 +710,24 @@ async def show_referral(update: Update, context: ContextTypes.DEFAULT_TYPE):
     commission = settings.get("referral_commission", 10)
     ref_link   = f"https://t.me/{context.bot.username}?start=ref{user_id}"
     await update.message.reply_text(
-        f"ЁЯОБ *Referral System*\n"
-        f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-        f"ЁЯТ╕ Commission Rate: *{commission}%*\n\n"
-        f"ЁЯСе Total Referred: *{user.get('referral_count', 0)} users*\n"
-        f"ЁЯТ░ Total Earned: *{user.get('total_earned', 0)} {CURRENCY}*\n\n"
-        f"ЁЯУМ *How it works:*\n"
-        f"1я╕ПтГг Share your referral link\n"
-        f"2я╕ПтГг Friend joins & deposits\n"
-        f"3я╕ПтГг You earn {commission}% commission!\n"
-        f"4я╕ПтГг Use balance to buy VPN/Proxy\n\n"
-        f"ЁЯФЧ *Your Referral Link:*\n`{ref_link}`",
+        f"🎁 *Referral System*\n"
+        f"━━━━━━━━━━━━━━━\n"
+        f"💸 Commission Rate: *{commission}%*\n\n"
+        f"👥 Total Referred: *{user.get('referral_count', 0)} users*\n"
+        f"💰 Total Earned: *{user.get('total_earned', 0)} {CURRENCY}*\n\n"
+        f"📌 *How it works:*\n"
+        f"1️⃣ Share your referral link\n"
+        f"2️⃣ Friend joins & deposits\n"
+        f"3️⃣ You earn {commission}% commission!\n"
+        f"4️⃣ Use balance to buy VPN/Proxy\n\n"
+        f"🔗 *Your Referral Link:*\n`{ref_link}`",
         parse_mode=ParseMode.MARKDOWN
     )
 
 
 async def show_support(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        f"ЁЯОз *Support*\n\nNeed help? Contact our support team!\n\nЁЯСЙ Tap the button below.",
+        f"🎧 *Support*\n\nNeed help? Contact our support team!\n\n👉 Tap the button below.",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=support_inline()
     )
@@ -736,14 +736,14 @@ async def show_support(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def show_buy_vpn(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = get_user(update.effective_user.id)
     if user and user.get("is_banned"):
-        await update.message.reply_text("ЁЯЪл You are banned.")
+        await update.message.reply_text("🚫 You are banned.")
         return
     products = get_products_by_category("vpn")
     if not products:
-        await update.message.reply_text("тЭМ No VPN products available right now.")
+        await update.message.reply_text("❌ No VPN products available right now.")
         return
     await update.message.reply_text(
-        f"ЁЯФТ *Buy VPN*\n\nЁЯТ░ Your Balance: *{user.get('balance', 0)} {CURRENCY}*\n\nSelect a package:",
+        f"🔒 *Buy VPN*\n\n💰 Your Balance: *{user.get('balance', 0)} {CURRENCY}*\n\nSelect a package:",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=products_inline(products, "vpn")
     )
@@ -752,14 +752,14 @@ async def show_buy_vpn(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def show_buy_proxy(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = get_user(update.effective_user.id)
     if user and user.get("is_banned"):
-        await update.message.reply_text("ЁЯЪл You are banned.")
+        await update.message.reply_text("🚫 You are banned.")
         return
     products = get_products_by_category("proxy")
     if not products:
-        await update.message.reply_text("тЭМ No Proxy products available right now.")
+        await update.message.reply_text("❌ No Proxy products available right now.")
         return
     await update.message.reply_text(
-        f"ЁЯМР *Buy Proxy*\n\nЁЯТ░ Your Balance: *{user.get('balance', 0)} {CURRENCY}*\n\nSelect a package:",
+        f"🌐 *Buy Proxy*\n\n💰 Your Balance: *{user.get('balance', 0)} {CURRENCY}*\n\nSelect a package:",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=products_inline(products, "proxy")
     )
@@ -770,21 +770,21 @@ async def show_deposit_money(update: Update, context: ContextTypes.DEFAULT_TYPE)
     bkash    = settings.get("bkash") or "Not set"
     nagad    = settings.get("nagad") or "Not set"
     await update.message.reply_text(
-        f"ЁЯТ│ *Deposit Money*\n"
-        f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
+        f"💳 *Deposit Money*\n"
+        f"━━━━━━━━━━━━━━━\n"
         f"Send money to any of these numbers:\n\n"
-        f"ЁЯТЪ *bKash:* `{bkash}`\n"
-        f"ЁЯЯа *Nagad:* `{nagad}`\n\n"
+        f"💚 *bKash:* `{bkash}`\n"
+        f"🟠 *Nagad:* `{nagad}`\n\n"
         f"After payment, tap below to submit:",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton("ЁЯУд Submit Payment", callback_data="submit_deposit")
+            InlineKeyboardButton("📤 Submit Payment", callback_data="submit_deposit")
         ]])
     )
 
 
 # ============================================================
-# тЪЩя╕П ADMIN HANDLERS
+# ⚙️ ADMIN HANDLERS
 # ============================================================
 
 async def show_admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -792,11 +792,11 @@ async def show_admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     s = get_stats()
     await update.message.reply_text(
-        f"тЪЩя╕П *Admin Panel*\n"
-        f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-        f"ЁЯСе Total Users: {s['total_users']}\n"
-        f"тП│ Pending Deposits: {s['pending_deposits']}\n"
-        f"ЁЯЫТ Total Orders: {s['total_orders']}\n\n"
+        f"⚙️ *Admin Panel*\n"
+        f"━━━━━━━━━━━━━━━\n"
+        f"👥 Total Users: {s['total_users']}\n"
+        f"⏳ Pending Deposits: {s['pending_deposits']}\n"
+        f"🛒 Total Orders: {s['total_orders']}\n\n"
         f"Select an option:",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=admin_menu_kb()
@@ -805,7 +805,7 @@ async def show_admin_panel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def show_admin_products(update: Update, context: ContextTypes.DEFAULT_TYPE):
     products = get_all_products()
-    text = f"ЁЯУж *Products* ({len(products)} total)\n\nSelect to manage:" if products else "ЁЯУж *Products*\n\nNo products yet."
+    text = f"📦 *Products* ({len(products)} total)\n\nSelect to manage:" if products else "📦 *Products*\n\nNo products yet."
     await update.message.reply_text(text, parse_mode=ParseMode.MARKDOWN,
                                     reply_markup=admin_products_list_inline(products))
 
@@ -813,18 +813,18 @@ async def show_admin_products(update: Update, context: ContextTypes.DEFAULT_TYPE
 async def show_admin_stock(update: Update, context: ContextTypes.DEFAULT_TYPE):
     products = get_all_products()
     if not products:
-        await update.message.reply_text("тЭМ No products found. Add products first.")
+        await update.message.reply_text("❌ No products found. Add products first.")
         return
     keyboard = []
     for pid, p in products.items():
         stock = get_stock_count(pid)
-        emoji = "ЁЯФТ" if p.get("category") == "vpn" else "ЁЯМР"
+        emoji = "🔒" if p.get("category") == "vpn" else "🌐"
         keyboard.append([InlineKeyboardButton(
-            f"{emoji} {p['name']} тАФ {stock} in stock",
+            f"{emoji} {p['name']} — {stock} in stock",
             callback_data=f"manage_stock_{pid}"
         )])
     await update.message.reply_text(
-        "ЁЯУБ *Stock Management*\n\nSelect product to add stock:",
+        "📁 *Stock Management*\n\nSelect product to add stock:",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup(keyboard)
     )
@@ -839,14 +839,14 @@ async def _send_deposits_page(msg_or_query, context, page=1):
     is_query = hasattr(msg_or_query, 'edit_message_text')
 
     if not deposits:
-        text = "ЁЯУЛ *Pending Deposits*\n\nNo pending requests."
+        text = "📋 *Pending Deposits*\n\nNo pending requests."
         if is_query:
             await msg_or_query.edit_message_text(text, parse_mode=ParseMode.MARKDOWN)
         else:
             await msg_or_query.reply_text(text, parse_mode=ParseMode.MARKDOWN)
         return
 
-    header = f"ЁЯУЛ *Pending Deposits* ({total} total) тАФ Page {page}/{total_pages}\nтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ"
+    header = f"📋 *Pending Deposits* ({total} total) — Page {page}/{total_pages}\n━━━━━━━━━━━━━━━"
     if is_query:
         await msg_or_query.edit_message_text(header, parse_mode=ParseMode.MARKDOWN)
         send_fn = msg_or_query.message.reply_text
@@ -858,18 +858,18 @@ async def _send_deposits_page(msg_or_query, context, page=1):
         await send_fn(format_deposit(dep), parse_mode=ParseMode.MARKDOWN,
                       reply_markup=admin_deposit_inline(dep["dep_id"]))
 
-    await send_fn(f"ЁЯУД Page {page}/{total_pages}",
+    await send_fn(f"📄 Page {page}/{total_pages}",
                   reply_markup=admin_deposits_pagination_inline(page, total_pages))
 
 
 async def show_admin_users(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "ЁЯСе *Users Management*\n\nSelect option:",
+        "👥 *Users Management*\n\nSelect option:",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("ЁЯСе All Users",          callback_data="users_all_1")],
-            [InlineKeyboardButton("ЁЯЪл Banned Users",       callback_data="users_banned_1")],
-            [InlineKeyboardButton("ЁЯФН Search by Username", callback_data="search_user")]
+            [InlineKeyboardButton("👥 All Users",          callback_data="users_all_1")],
+            [InlineKeyboardButton("🚫 Banned Users",       callback_data="users_banned_1")],
+            [InlineKeyboardButton("🔍 Search by Username", callback_data="search_user")]
         ])
     )
 
@@ -877,7 +877,7 @@ async def show_admin_users(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def show_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["admin_step"] = "broadcast"
     await update.message.reply_text(
-        "ЁЯУв *Broadcast Message*\n\nSend the message to broadcast to all users:",
+        "📢 *Broadcast Message*\n\nSend the message to broadcast to all users:",
         parse_mode=ParseMode.MARKDOWN, reply_markup=cancel_kb()
     )
 
@@ -885,7 +885,7 @@ async def show_broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def show_personal_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["admin_step"] = "personal_msg_id"
     await update.message.reply_text(
-        "ЁЯСд *Personal Message*\n\nEnter User ID or @username:",
+        "👤 *Personal Message*\n\nEnter User ID or @username:",
         parse_mode=ParseMode.MARKDOWN, reply_markup=cancel_kb()
     )
 
@@ -893,11 +893,11 @@ async def show_personal_message(update: Update, context: ContextTypes.DEFAULT_TY
 async def show_payment_settings(update: Update, context: ContextTypes.DEFAULT_TYPE):
     settings = get_settings()
     await update.message.reply_text(
-        "ЁЯТ░ *Payment Settings*\n\nSelect to update:",
+        "💰 *Payment Settings*\n\nSelect to update:",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton(f"ЁЯТЪ bKash: {settings.get('bkash') or 'Not set'}", callback_data="set_bkash")],
-            [InlineKeyboardButton(f"ЁЯЯа Nagad: {settings.get('nagad') or 'Not set'}", callback_data="set_nagad")]
+            [InlineKeyboardButton(f"💚 bKash: {settings.get('bkash') or 'Not set'}", callback_data="set_bkash")],
+            [InlineKeyboardButton(f"🟠 Nagad: {settings.get('nagad') or 'Not set'}", callback_data="set_nagad")]
         ])
     )
 
@@ -905,10 +905,10 @@ async def show_payment_settings(update: Update, context: ContextTypes.DEFAULT_TY
 async def show_referral_settings(update: Update, context: ContextTypes.DEFAULT_TYPE):
     commission = get_settings().get("referral_commission", 10)
     await update.message.reply_text(
-        f"ЁЯОБ *Referral Settings*\n\nCurrent Commission: *{commission}%*",
+        f"🎁 *Referral Settings*\n\nCurrent Commission: *{commission}%*",
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=InlineKeyboardMarkup([[
-            InlineKeyboardButton(f"тЬПя╕П Change ({commission}%)", callback_data="set_commission")
+            InlineKeyboardButton(f"✏️ Change ({commission}%)", callback_data="set_commission")
         ]])
     )
 
@@ -916,21 +916,21 @@ async def show_referral_settings(update: Update, context: ContextTypes.DEFAULT_T
 async def show_stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
     s = get_stats()
     await update.message.reply_text(
-        f"ЁЯУК *Bot Statistics*\n"
-        f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-        f"ЁЯСе Total Users: *{s['total_users']}*\n"
-        f"ЁЯЪл Banned Users: *{s['banned_users']}*\n"
-        f"тП│ Pending Deposits: *{s['pending_deposits']}*\n"
-        f"ЁЯТ░ Total Deposited: *{s['total_deposits']} {CURRENCY}*\n"
-        f"ЁЯЫТ Total Orders: *{s['total_orders']}*\n"
-        f"ЁЯФТ VPN Orders: *{s['vpn_orders']}*\n"
-        f"ЁЯМР Proxy Orders: *{s['proxy_orders']}*",
+        f"📊 *Bot Statistics*\n"
+        f"━━━━━━━━━━━━━━━\n"
+        f"👥 Total Users: *{s['total_users']}*\n"
+        f"🚫 Banned Users: *{s['banned_users']}*\n"
+        f"⏳ Pending Deposits: *{s['pending_deposits']}*\n"
+        f"💰 Total Deposited: *{s['total_deposits']} {CURRENCY}*\n"
+        f"🛒 Total Orders: *{s['total_orders']}*\n"
+        f"🔒 VPN Orders: *{s['vpn_orders']}*\n"
+        f"🌐 Proxy Orders: *{s['proxy_orders']}*",
         parse_mode=ParseMode.MARKDOWN
     )
 
 
 # ============================================================
-# ЁЯТм UNIFIED TEXT HANDLER
+# 💬 UNIFIED TEXT HANDLER
 # ============================================================
 
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -942,31 +942,31 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Ban check
     db_user = get_user(user_id)
     if db_user and db_user.get("is_banned"):
-        await update.message.reply_text("ЁЯЪл You are banned from this bot.")
+        await update.message.reply_text("🚫 You are banned from this bot.")
         return
 
     # Cancel
-    if text in ["тЭМ Cancel", "ЁЯФЩ User Menu"]:
+    if text in ["❌ Cancel", "🔙 User Menu"]:
         context.user_data.clear()
-        await update.message.reply_text("ЁЯПа Main Menu", reply_markup=main_menu_kb())
+        await update.message.reply_text("🏠 Main Menu", reply_markup=main_menu_kb())
         return
 
-    # тФАтФА DEPOSIT FLOW тФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФА
+    # ── DEPOSIT FLOW ──────────────────────────────────────
     if dep_step == "amount":
         try:
             amount = float(text)
             if amount <= 0: raise ValueError
             context.user_data["dep_amount"] = amount
             context.user_data["deposit_step"] = "trxid"
-            await update.message.reply_text("ЁЯз╛ *Enter Transaction ID:*", parse_mode=ParseMode.MARKDOWN)
+            await update.message.reply_text("🧾 *Enter Transaction ID:*", parse_mode=ParseMode.MARKDOWN)
         except ValueError:
-            await update.message.reply_text("тЭМ Invalid amount. Enter a valid number.")
+            await update.message.reply_text("❌ Invalid amount. Enter a valid number.")
         return
 
     if dep_step == "trxid":
         context.user_data["dep_trxid"] = text
         context.user_data["deposit_step"] = "phone"
-        await update.message.reply_text("ЁЯУ▒ *Enter the phone number used for payment:*", parse_mode=ParseMode.MARKDOWN)
+        await update.message.reply_text("📱 *Enter the phone number used for payment:*", parse_mode=ParseMode.MARKDOWN)
         return
 
     if dep_step == "phone":
@@ -977,47 +977,47 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         dep_id = create_deposit(user.id, user.username, amount, trxid, phone)
         context.user_data.clear()
         await update.message.reply_text(
-            f"тЬЕ *Deposit Submitted!*\n"
-            f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-            f"ЁЯТ░ Amount: *{amount} {CURRENCY}*\n"
-            f"ЁЯз╛ TrxID: `{trxid}`\n"
-            f"ЁЯУ▒ Phone: `{phone}`\n"
-            f"ЁЯЖФ Dep ID: `{dep_id}`\n\n"
-            f"тП│ Waiting for admin approval...",
+            f"✅ *Deposit Submitted!*\n"
+            f"━━━━━━━━━━━━━━━\n"
+            f"💰 Amount: *{amount} {CURRENCY}*\n"
+            f"🧾 TrxID: `{trxid}`\n"
+            f"📱 Phone: `{phone}`\n"
+            f"🆔 Dep ID: `{dep_id}`\n\n"
+            f"⏳ Waiting for admin approval...",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=main_menu_kb()
         )
         try:
             await context.bot.send_message(
                 ADMIN_ID,
-                f"ЁЯТ│ *New Deposit Request!*\n"
-                f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-                f"ЁЯСд @{user.username or 'N/A'} (`{user.id}`)\n"
-                f"ЁЯТ░ Amount: *{amount} {CURRENCY}*\n"
-                f"ЁЯз╛ TrxID: `{trxid}`\n"
-                f"ЁЯУ▒ Phone: `{phone}`\n"
-                f"ЁЯЖФ Dep ID: `{dep_id}`",
+                f"💳 *New Deposit Request!*\n"
+                f"━━━━━━━━━━━━━━━\n"
+                f"👤 @{user.username or 'N/A'} (`{user.id}`)\n"
+                f"💰 Amount: *{amount} {CURRENCY}*\n"
+                f"🧾 TrxID: `{trxid}`\n"
+                f"📱 Phone: `{phone}`\n"
+                f"🆔 Dep ID: `{dep_id}`",
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=admin_deposit_inline(dep_id)
             )
         except: pass
         return
 
-    # тФАтФА ADMIN STEPS тФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФА
+    # ── ADMIN STEPS ───────────────────────────────────────
     if is_admin(user_id) and step:
 
         if step == "add_prod_name":
             context.user_data["new_prod_name"] = text
             context.user_data["admin_step"] = "add_prod_price"
-            await update.message.reply_text("ЁЯТ▓ Enter price (BDT):", reply_markup=cancel_kb())
+            await update.message.reply_text("💲 Enter price (BDT):", reply_markup=cancel_kb())
             return
 
         if step == "add_prod_price":
             try:
                 context.user_data["new_prod_price"] = float(text)
                 context.user_data["admin_step"] = "add_prod_duration"
-                await update.message.reply_text("ЁЯУЕ Enter duration (days):", reply_markup=cancel_kb())
-            except: await update.message.reply_text("тЭМ Invalid price.")
+                await update.message.reply_text("📅 Enter duration (days):", reply_markup=cancel_kb())
+            except: await update.message.reply_text("❌ Invalid price.")
             return
 
         if step == "add_prod_duration":
@@ -1033,10 +1033,10 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 price = context.user_data["new_prod_price"]
                 context.user_data.clear()
                 await update.message.reply_text(
-                    f"тЬЕ *Product Added!*\nЁЯУМ {name}\nЁЯТ░ {price} {CURRENCY}\nЁЯУЕ {duration} days",
+                    f"✅ *Product Added!*\n📌 {name}\n💰 {price} {CURRENCY}\n📅 {duration} days",
                     parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb()
                 )
-            except: await update.message.reply_text("тЭМ Invalid duration.")
+            except: await update.message.reply_text("❌ Invalid duration.")
             return
 
         if step == "edit_prod_name":
@@ -1046,7 +1046,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 p["name"] = text
                 save_product(pid, p)
                 context.user_data.clear()
-                await update.message.reply_text(f"тЬЕ Name updated to *{text}*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
+                await update.message.reply_text(f"✅ Name updated to *{text}*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
             return
 
         if step == "edit_prod_price":
@@ -1056,8 +1056,8 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 p["price"] = float(text)
                 save_product(pid, p)
                 context.user_data.clear()
-                await update.message.reply_text(f"тЬЕ Price updated to *{text} {CURRENCY}*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
-            except: await update.message.reply_text("тЭМ Invalid price.")
+                await update.message.reply_text(f"✅ Price updated to *{text} {CURRENCY}*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
+            except: await update.message.reply_text("❌ Invalid price.")
             return
 
         if step == "edit_prod_duration":
@@ -1067,8 +1067,8 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 p["duration_days"] = int(text)
                 save_product(pid, p)
                 context.user_data.clear()
-                await update.message.reply_text(f"тЬЕ Duration updated to *{text} days*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
-            except: await update.message.reply_text("тЭМ Invalid duration.")
+                await update.message.reply_text(f"✅ Duration updated to *{text} days*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
+            except: await update.message.reply_text("❌ Invalid duration.")
             return
 
         if step == "add_stock":
@@ -1077,14 +1077,14 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 count = get_stock_count(pid)
                 context.user_data.clear()
                 await update.message.reply_text(
-                    f"тЬЕ Done! Total stock: *{count}*",
+                    f"✅ Done! Total stock: *{count}*",
                     parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb()
                 )
             else:
                 pid = context.user_data.get("stock_product_id")
                 add_stock(pid, text)
                 await update.message.reply_text(
-                    f"тЬЕ Added! Stock: *{get_stock_count(pid)}*\nAdd more or /done",
+                    f"✅ Added! Stock: *{get_stock_count(pid)}*\nAdd more or /done",
                     parse_mode=ParseMode.MARKDOWN
                 )
             return
@@ -1098,7 +1098,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     reply_markup=admin_user_actions_inline(found["id"], found.get("is_banned", False))
                 )
             else:
-                await update.message.reply_text(f"тЭМ User @{text.lstrip('@')} not found.")
+                await update.message.reply_text(f"❌ User @{text.lstrip('@')} not found.")
             return
 
         if step == "balance_amount":
@@ -1111,28 +1111,28 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 context.user_data.clear()
                 verb = "added to" if final_amt > 0 else "deducted from"
                 await update.message.reply_text(
-                    f"тЬЕ *{abs(final_amt)} {CURRENCY}* {verb} user `{target_id}`\nNew balance: *{new_bal} {CURRENCY}*",
+                    f"✅ *{abs(final_amt)} {CURRENCY}* {verb} user `{target_id}`\nNew balance: *{new_bal} {CURRENCY}*",
                     parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb()
                 )
                 try:
-                    msg = (f"ЁЯТ░ *{amount} {CURRENCY}* added to your balance by admin.\nNew Balance: *{new_bal} {CURRENCY}*"
+                    msg = (f"💰 *{amount} {CURRENCY}* added to your balance by admin.\nNew Balance: *{new_bal} {CURRENCY}*"
                            if final_amt > 0 else
-                           f"ЁЯТ╕ *{amount} {CURRENCY}* deducted from your balance by admin.\nNew Balance: *{new_bal} {CURRENCY}*")
+                           f"💸 *{amount} {CURRENCY}* deducted from your balance by admin.\nNew Balance: *{new_bal} {CURRENCY}*")
                     await context.bot.send_message(target_id, msg, parse_mode=ParseMode.MARKDOWN)
                 except: pass
-            except: await update.message.reply_text("тЭМ Invalid amount.")
+            except: await update.message.reply_text("❌ Invalid amount.")
             return
 
         if step == "set_bkash":
             update_setting("bkash", text)
             context.user_data.clear()
-            await update.message.reply_text(f"тЬЕ bKash updated: `{text}`", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
+            await update.message.reply_text(f"✅ bKash updated: `{text}`", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
             return
 
         if step == "set_nagad":
             update_setting("nagad", text)
             context.user_data.clear()
-            await update.message.reply_text(f"тЬЕ Nagad updated: `{text}`", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
+            await update.message.reply_text(f"✅ Nagad updated: `{text}`", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
             return
 
         if step == "set_commission":
@@ -1141,10 +1141,10 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 if 0 <= rate <= 100:
                     update_setting("referral_commission", rate)
                     context.user_data.clear()
-                    await update.message.reply_text(f"тЬЕ Commission updated to *{rate}%*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
+                    await update.message.reply_text(f"✅ Commission updated to *{rate}%*", parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb())
                 else:
-                    await update.message.reply_text("тЭМ Enter value 0тАУ100.")
-            except: await update.message.reply_text("тЭМ Invalid value.")
+                    await update.message.reply_text("❌ Enter value 0–100.")
+            except: await update.message.reply_text("❌ Invalid value.")
             return
 
         if step == "broadcast":
@@ -1157,7 +1157,7 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 except: failed += 1
             context.user_data.clear()
             await update.message.reply_text(
-                f"ЁЯУв *Broadcast Complete!*\nтЬЕ Sent: {sent}\nтЭМ Failed: {failed}",
+                f"📢 *Broadcast Complete!*\n✅ Sent: {sent}\n❌ Failed: {failed}",
                 parse_mode=ParseMode.MARKDOWN, reply_markup=admin_menu_kb()
             )
             return
@@ -1175,9 +1175,9 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if target:
                 context.user_data["personal_msg_target"] = target
                 context.user_data["admin_step"] = "personal_msg_text"
-                await update.message.reply_text(f"тЬЕ User `{target}` found.\n\nEnter message:", parse_mode=ParseMode.MARKDOWN)
+                await update.message.reply_text(f"✅ User `{target}` found.\n\nEnter message:", parse_mode=ParseMode.MARKDOWN)
             else:
-                await update.message.reply_text("тЭМ User not found.")
+                await update.message.reply_text("❌ User not found.")
             return
 
         if step == "personal_msg_text":
@@ -1185,20 +1185,20 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             try:
                 await context.bot.send_message(target, text, parse_mode=ParseMode.MARKDOWN)
                 context.user_data.clear()
-                await update.message.reply_text("тЬЕ Message sent!", reply_markup=admin_menu_kb())
-            except: await update.message.reply_text("тЭМ Failed to send.")
+                await update.message.reply_text("✅ Message sent!", reply_markup=admin_menu_kb())
+            except: await update.message.reply_text("❌ Failed to send.")
             return
 
-    # тФАтФА MENU ROUTING тФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФАтФА
+    # ── MENU ROUTING ──────────────────────────────────────
     routes = {
-        "ЁЯСд My Account":   show_my_account,
-        "ЁЯТ░ Check Balance":show_check_balance,
-        "ЁЯФТ Buy VPN":      show_buy_vpn,
-        "ЁЯМР Buy Proxy":    show_buy_proxy,
-        "ЁЯУЛ My Orders":    show_my_orders,
-        "ЁЯТ│ Deposit Money":show_deposit_money,
-        "ЁЯОБ Referral":     show_referral,
-        "ЁЯОз Support":      show_support,
+        "👤 My Account":   show_my_account,
+        "💰 Check Balance":show_check_balance,
+        "🔒 Buy VPN":      show_buy_vpn,
+        "🌐 Buy Proxy":    show_buy_proxy,
+        "📋 My Orders":    show_my_orders,
+        "💳 Deposit Money":show_deposit_money,
+        "🎁 Referral":     show_referral,
+        "🎧 Support":      show_support,
     }
     if text in routes:
         await routes[text](update, context)
@@ -1206,22 +1206,22 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if is_admin(user_id):
         admin_routes = {
-            "ЁЯУж Products":         show_admin_products,
-            "ЁЯУБ Stock":            show_admin_stock,
-            "ЁЯУЛ Pending Deposits": show_pending_deposits,
-            "ЁЯСе Users":            show_admin_users,
-            "ЁЯУв Broadcast":        show_broadcast,
-            "ЁЯСд Personal Message": show_personal_message,
-            "ЁЯТ░ Payment Settings": show_payment_settings,
-            "ЁЯОБ Referral Settings":show_referral_settings,
-            "ЁЯУК Statistics":       show_stats,
+            "📦 Products":         show_admin_products,
+            "📁 Stock":            show_admin_stock,
+            "📋 Pending Deposits": show_pending_deposits,
+            "👥 Users":            show_admin_users,
+            "📢 Broadcast":        show_broadcast,
+            "👤 Personal Message": show_personal_message,
+            "💰 Payment Settings": show_payment_settings,
+            "🎁 Referral Settings":show_referral_settings,
+            "📊 Statistics":       show_stats,
         }
         if text in admin_routes:
             await admin_routes[text](update, context)
 
 
 # ============================================================
-# ЁЯФШ CALLBACK QUERY HANDLER
+# 🔘 CALLBACK QUERY HANDLER
 # ============================================================
 
 async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -1237,13 +1237,13 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Back to main
     if data == "back_main":
-        await query.edit_message_text("ЁЯПа Use the menu below.")
+        await query.edit_message_text("🏠 Use the menu below.")
         return
 
     # Submit deposit
     if data == "submit_deposit":
         context.user_data["deposit_step"] = "amount"
-        await query.edit_message_text("ЁЯТ░ *Enter amount (BDT):*\nExample: `500`", parse_mode=ParseMode.MARKDOWN)
+        await query.edit_message_text("💰 *Enter amount (BDT):*\nExample: `500`", parse_mode=ParseMode.MARKDOWN)
         return
 
     # Go deposit shortcut
@@ -1253,7 +1253,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         nagad = settings.get("nagad") or "Not set"
         context.user_data["deposit_step"] = "amount"
         await query.edit_message_text(
-            f"ЁЯТ│ bKash: `{bkash}`\nNagad: `{nagad}`\n\nЁЯТ░ Enter amount (BDT):",
+            f"💳 bKash: `{bkash}`\nNagad: `{nagad}`\n\n💰 Enter amount (BDT):",
             parse_mode=ParseMode.MARKDOWN
         )
         return
@@ -1263,33 +1263,33 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         product_id = data.replace("buy_", "")
         product    = get_product(product_id)
         if not product:
-            await query.edit_message_text("тЭМ Product not found.")
+            await query.edit_message_text("❌ Product not found.")
             return
         user  = get_user(uid)
         stock = get_stock_count(product_id)
-        emoji = "ЁЯФТ" if product.get("category") == "vpn" else "ЁЯМР"
+        emoji = "🔒" if product.get("category") == "vpn" else "🌐"
         text  = (
             f"{emoji} *{product['name']}*\n"
-            f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-            f"ЁЯТ░ Price: *{product['price']} {CURRENCY}*\n"
-            f"ЁЯУЕ Duration: *{product['duration_days']} days*\n"
-            f"ЁЯУж Stock: *{stock} available*\n\n"
-            f"ЁЯТ│ Your Balance: *{user.get('balance', 0)} {CURRENCY}*\n"
+            f"━━━━━━━━━━━━━━━\n"
+            f"💰 Price: *{product['price']} {CURRENCY}*\n"
+            f"📅 Duration: *{product['duration_days']} days*\n"
+            f"📦 Stock: *{stock} available*\n\n"
+            f"💳 Your Balance: *{user.get('balance', 0)} {CURRENCY}*\n"
         )
         if user.get("balance", 0) < product["price"]:
-            text += f"\nтЭМ *Insufficient balance!*\nNeeded: {product['price']} | Have: {user.get('balance', 0)}"
+            text += f"\n❌ *Insufficient balance!*\nNeeded: {product['price']} | Have: {user.get('balance', 0)}"
             await query.edit_message_text(text, parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup([
-                    [InlineKeyboardButton("ЁЯТ│ Deposit", callback_data="go_deposit"),
-                     InlineKeyboardButton("ЁЯФЩ Back",    callback_data="back_main")]
+                    [InlineKeyboardButton("💳 Deposit", callback_data="go_deposit"),
+                     InlineKeyboardButton("🔙 Back",    callback_data="back_main")]
                 ]))
             return
         if stock == 0:
-            text += "\nтЭМ *Out of stock!*"
+            text += "\n❌ *Out of stock!*"
             await query.edit_message_text(text, parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("ЁЯФЩ Back", callback_data="back_main")]]))
+                reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🔙 Back", callback_data="back_main")]]))
             return
-        text += "\nтЬЕ Ready to purchase!"
+        text += "\n✅ Ready to purchase!"
         await query.edit_message_text(text, parse_mode=ParseMode.MARKDOWN,
                                       reply_markup=confirm_purchase_inline(product_id))
         return
@@ -1300,14 +1300,14 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         product    = get_product(product_id)
         user       = get_user(uid)
         if not product:
-            await query.edit_message_text("тЭМ Product not found.")
+            await query.edit_message_text("❌ Product not found.")
             return
         if user.get("balance", 0) < product["price"]:
-            await query.edit_message_text("тЭМ Insufficient balance.")
+            await query.edit_message_text("❌ Insufficient balance.")
             return
         credential = pop_stock(product_id)
         if not credential:
-            await query.edit_message_text("тЭМ Out of stock!")
+            await query.edit_message_text("❌ Out of stock!")
             return
         expiry_date = get_expiry_date(product["duration_days"])
         order_id    = create_order(uid, product_id, product["name"], product["category"],
@@ -1315,28 +1315,28 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         update_user_balance(uid, -product["price"])
         parts = credential.split(":")
         if len(parts) == 2:
-            cred_text = f"ЁЯСд Username: `{parts[0]}`\nЁЯФС Password: `{parts[1]}`"
+            cred_text = f"👤 Username: `{parts[0]}`\n🔑 Password: `{parts[1]}`"
         elif len(parts) >= 3:
-            cred_text = f"ЁЯМР Proxy: `{credential}`"
+            cred_text = f"🌐 Proxy: `{credential}`"
         else:
-            cred_text = f"ЁЯУЛ Details: `{credential}`"
-        emoji = "ЁЯФТ" if product.get("category") == "vpn" else "ЁЯМР"
+            cred_text = f"📋 Details: `{credential}`"
+        emoji = "🔒" if product.get("category") == "vpn" else "🌐"
         new_balance = get_user(uid).get("balance", 0)
         await query.edit_message_text(
-            f"тЬЕ *Purchase Successful!*\n"
-            f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
+            f"✅ *Purchase Successful!*\n"
+            f"━━━━━━━━━━━━━━━\n"
             f"{emoji} *{product['name']}*\n"
-            f"ЁЯЖФ Order: `{order_id}`\n"
-            f"ЁЯУЕ Expires: {format_date(expiry_date)}\n\n"
-            f"ЁЯУЛ *Your Credentials:*\n{cred_text}\n\n"
-            f"ЁЯТ░ Remaining Balance: *{new_balance} {CURRENCY}*\n\n"
-            f"Thank you! ЁЯОЙ",
+            f"🆔 Order: `{order_id}`\n"
+            f"📅 Expires: {format_date(expiry_date)}\n\n"
+            f"📋 *Your Credentials:*\n{cred_text}\n\n"
+            f"💰 Remaining Balance: *{new_balance} {CURRENCY}*\n\n"
+            f"Thank you! 🎉",
             parse_mode=ParseMode.MARKDOWN
         )
         try:
             await context.bot.send_message(
                 ADMIN_ID,
-                f"ЁЯЫТ *New Order!*\nЁЯСд `{uid}`\nЁЯУж {product['name']}\nЁЯТ░ {product['price']} {CURRENCY}\nЁЯЖФ `{order_id}`",
+                f"🛒 *New Order!*\n👤 `{uid}`\n📦 {product['name']}\n💰 {product['price']} {CURRENCY}\n🆔 `{order_id}`",
                 parse_mode=ParseMode.MARKDOWN
             )
         except: pass
@@ -1347,7 +1347,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             try:
                 await context.bot.send_message(
                     ADMIN_ID,
-                    f"тЪая╕П *Low Stock Alert!*\n{emoji} {product['name']}\nRemaining: *{remaining}*",
+                    f"⚠️ *Low Stock Alert!*\n{emoji} {product['name']}\nRemaining: *{remaining}*",
                     parse_mode=ParseMode.MARKDOWN
                 )
             except: pass
@@ -1365,10 +1365,10 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         dep_id = data.replace("approve_dep_", "")
         dep    = get_deposit(dep_id)
         if not dep:
-            await query.edit_message_text("тЭМ Not found.")
+            await query.edit_message_text("❌ Not found.")
             return
         if dep.get("status") != "pending":
-            await query.edit_message_text(f"тЪая╕П Already {dep.get('status')}.")
+            await query.edit_message_text(f"⚠️ Already {dep.get('status')}.")
             return
         amount  = dep.get("amount", 0)
         user_id = dep.get("user_id")
@@ -1389,19 +1389,19 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 try:
                     await context.bot.send_message(
                         referrer_id,
-                        f"ЁЯОБ *Referral Commission!*\nYour referral deposited {amount} {CURRENCY}\nYou earned: *{commission} {CURRENCY}*\nBalance: *{get_user(referrer_id).get('balance',0)} {CURRENCY}*",
+                        f"🎁 *Referral Commission!*\nYour referral deposited {amount} {CURRENCY}\nYou earned: *{commission} {CURRENCY}*\nBalance: *{get_user(referrer_id).get('balance',0)} {CURRENCY}*",
                         parse_mode=ParseMode.MARKDOWN
                     )
                 except: pass
 
         await query.edit_message_text(
-            f"тЬЕ Approved! User `{user_id}` | Amount: *{amount} {CURRENCY}* | Balance: *{new_bal} {CURRENCY}*",
+            f"✅ Approved! User `{user_id}` | Amount: *{amount} {CURRENCY}* | Balance: *{new_bal} {CURRENCY}*",
             parse_mode=ParseMode.MARKDOWN
         )
         try:
             await context.bot.send_message(
                 user_id,
-                f"тЬЕ *Deposit Approved!*\nЁЯТ░ *{amount} {CURRENCY}* added.\nNew Balance: *{new_bal} {CURRENCY}*\n\nYou can now buy VPN or Proxy! ЁЯОЙ",
+                f"✅ *Deposit Approved!*\n💰 *{amount} {CURRENCY}* added.\nNew Balance: *{new_bal} {CURRENCY}*\n\nYou can now buy VPN or Proxy! 🎉",
                 parse_mode=ParseMode.MARKDOWN
             )
         except: pass
@@ -1413,14 +1413,14 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         dep_id = data.replace("reject_dep_", "")
         dep    = get_deposit(dep_id)
         if not dep:
-            await query.edit_message_text("тЭМ Not found.")
+            await query.edit_message_text("❌ Not found.")
             return
         update_deposit_status(dep_id, "rejected")
-        await query.edit_message_text(f"тЭМ Deposit `{dep_id}` rejected.", parse_mode=ParseMode.MARKDOWN)
+        await query.edit_message_text(f"❌ Deposit `{dep_id}` rejected.", parse_mode=ParseMode.MARKDOWN)
         try:
             await context.bot.send_message(
                 dep.get("user_id"),
-                f"тЭМ *Deposit Rejected*\nAmount: *{dep.get('amount')} {CURRENCY}*\nTrxID: `{dep.get('trx_id')}`\n\nContact support if you think this is a mistake.",
+                f"❌ *Deposit Rejected*\nAmount: *{dep.get('amount')} {CURRENCY}*\nTrxID: `{dep.get('trx_id')}`\n\nContact support if you think this is a mistake.",
                 parse_mode=ParseMode.MARKDOWN, reply_markup=support_inline()
             )
         except: pass
@@ -1446,20 +1446,20 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         pid     = data.replace("view_prod_", "")
         product = get_product(pid)
         if not product:
-            await query.edit_message_text("тЭМ Not found.")
+            await query.edit_message_text("❌ Not found.")
             return
         stock  = get_stock_count(pid)
-        cat    = "ЁЯФТ VPN" if product.get("category") == "vpn" else "ЁЯМР Proxy"
-        status = "ЁЯЯв Active" if product.get("is_active") else "ЁЯФ┤ Disabled"
+        cat    = "🔒 VPN" if product.get("category") == "vpn" else "🌐 Proxy"
+        status = "🟢 Active" if product.get("is_active") else "🔴 Disabled"
         await query.edit_message_text(
-            f"ЁЯУж *Product Details*\n"
-            f"тФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n"
-            f"ЁЯУМ {product['name']}\n"
-            f"ЁЯТ░ {product['price']} {CURRENCY}\n"
-            f"ЁЯУЕ {product['duration_days']} days\n"
-            f"ЁЯП╖я╕П {cat}\n"
-            f"ЁЯУж Stock: *{stock}*\n"
-            f"тЪб {status}",
+            f"📦 *Product Details*\n"
+            f"━━━━━━━━━━━━━━━\n"
+            f"📌 {product['name']}\n"
+            f"💰 {product['price']} {CURRENCY}\n"
+            f"📅 {product['duration_days']} days\n"
+            f"🏷️ {cat}\n"
+            f"📦 Stock: *{stock}*\n"
+            f"⚡ {status}",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=admin_product_actions_inline(pid, product.get("is_active", True))
         )
@@ -1469,7 +1469,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if data == "add_product":
         if not is_admin(uid): return
         context.user_data["admin_step"] = "add_prod_category"
-        await query.edit_message_text("тЮХ *Add New Product*\n\nSelect category:",
+        await query.edit_message_text("➕ *Add New Product*\n\nSelect category:",
                                       parse_mode=ParseMode.MARKDOWN, reply_markup=product_category_inline())
         return
 
@@ -1479,7 +1479,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["new_prod_category"] = category
         context.user_data["admin_step"]        = "add_prod_name"
         await query.edit_message_text(
-            f"тЮХ Add *{'VPN' if category == 'vpn' else 'Proxy'}* Product\n\nEnter product name:",
+            f"➕ Add *{'VPN' if category == 'vpn' else 'Proxy'}* Product\n\nEnter product name:",
             parse_mode=ParseMode.MARKDOWN
         )
         return
@@ -1491,7 +1491,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         p   = get_product(pid)
         if p:
             delete_product(pid)
-            await query.edit_message_text(f"тЬЕ *{p['name']}* deleted.", parse_mode=ParseMode.MARKDOWN)
+            await query.edit_message_text(f"✅ *{p['name']}* deleted.", parse_mode=ParseMode.MARKDOWN)
         return
 
     # Toggle product
@@ -1503,8 +1503,8 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if p:
             p["is_active"] = enabled
             save_product(pid, p)
-            status = "enabled ЁЯЯв" if enabled else "disabled ЁЯФ┤"
-            await query.edit_message_text(f"тЬЕ *{p['name']}* {status}.", parse_mode=ParseMode.MARKDOWN)
+            status = "enabled 🟢" if enabled else "disabled 🔴"
+            await query.edit_message_text(f"✅ *{p['name']}* {status}.", parse_mode=ParseMode.MARKDOWN)
         return
 
     # Edit product
@@ -1512,21 +1512,21 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not is_admin(uid): return
         context.user_data["edit_prod_id"] = data.replace("edit_prod_name_", "")
         context.user_data["admin_step"]   = "edit_prod_name"
-        await query.edit_message_text("тЬПя╕П Enter new product name:")
+        await query.edit_message_text("✏️ Enter new product name:")
         return
 
     if data.startswith("edit_prod_price_"):
         if not is_admin(uid): return
         context.user_data["edit_prod_id"] = data.replace("edit_prod_price_", "")
         context.user_data["admin_step"]   = "edit_prod_price"
-        await query.edit_message_text("ЁЯТ▓ Enter new price (BDT):")
+        await query.edit_message_text("💲 Enter new price (BDT):")
         return
 
     if data.startswith("edit_prod_duration_"):
         if not is_admin(uid): return
         context.user_data["edit_prod_id"] = data.replace("edit_prod_duration_", "")
         context.user_data["admin_step"]   = "edit_prod_duration"
-        await query.edit_message_text("ЁЯУЕ Enter new duration (days):")
+        await query.edit_message_text("📅 Enter new duration (days):")
         return
 
     # Manage stock
@@ -1537,7 +1537,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["admin_step"]       = "add_stock"
         context.user_data["stock_product_id"] = pid
         await query.edit_message_text(
-            f"ЁЯУБ *Add Stock тАФ {product['name']}*\n"
+            f"📁 *Add Stock — {product['name']}*\n"
             f"Current: *{get_stock_count(pid)}*\n\n"
             f"For VPN: `username:password`\n"
             f"For Proxy: `ip:port:user:pass`\n\n"
@@ -1556,12 +1556,12 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if not users:
             await query.edit_message_text(f"No {filter_type} users.")
             return
-        title = "ЁЯСе All Users" if filter_type == "all" else "ЁЯЪл Banned Users"
-        text  = f"{title} ({total}) тАФ Page {page}/{total_pages}\nтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБтФБ\n\n"
+        title = "👥 All Users" if filter_type == "all" else "🚫 Banned Users"
+        text  = f"{title} ({total}) — Page {page}/{total_pages}\n━━━━━━━━━━━━━━━\n\n"
         for u in users:
             uname  = f"@{u['username']}" if u.get("username") else "No username"
-            status = "ЁЯЪл" if u.get("is_banned") else "тЬЕ"
-            text  += f"{status} `{u['id']}` тАФ {uname} тАФ {u.get('balance',0)} {CURRENCY}\n"
+            status = "🚫" if u.get("is_banned") else "✅"
+            text  += f"{status} `{u['id']}` — {uname} — {u.get('balance',0)} {CURRENCY}\n"
         await query.edit_message_text(text, parse_mode=ParseMode.MARKDOWN,
                                       reply_markup=admin_users_inline(page, total_pages, filter_type))
         return
@@ -1570,7 +1570,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if data == "search_user":
         if not is_admin(uid): return
         context.user_data["admin_step"] = "search_user"
-        await query.edit_message_text("ЁЯФН Enter username (with or without @):")
+        await query.edit_message_text("🔍 Enter username (with or without @):")
         return
 
     # View user
@@ -1579,7 +1579,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         target_id = int(data.replace("view_user_", ""))
         target    = get_user(target_id)
         if not target:
-            await query.edit_message_text("тЭМ User not found.")
+            await query.edit_message_text("❌ User not found.")
             return
         await query.edit_message_text(
             format_user_info(target), parse_mode=ParseMode.MARKDOWN,
@@ -1593,10 +1593,10 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         banning   = data.startswith("ban_")
         target_id = int(data.replace("ban_" if banning else "unban_", ""))
         ban_user(target_id, banning)
-        action = "banned ЁЯЪл" if banning else "unbanned тЬЕ"
+        action = "banned 🚫" if banning else "unbanned ✅"
         await query.edit_message_text(f"User `{target_id}` {action}.", parse_mode=ParseMode.MARKDOWN)
         try:
-            msg = "ЁЯЪл You have been banned." if banning else "тЬЕ You have been unbanned. Welcome back!"
+            msg = "🚫 You have been banned." if banning else "✅ You have been unbanned. Welcome back!"
             await context.bot.send_message(target_id, msg)
         except: pass
         return
@@ -1610,7 +1610,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         context.user_data["balance_user_id"] = target_id
         context.user_data["admin_step"]      = "balance_amount"
         verb = "add to" if adding else "deduct from"
-        await query.edit_message_text(f"ЁЯТ░ Enter amount to {verb} `{target_id}`'s balance:", parse_mode=ParseMode.MARKDOWN)
+        await query.edit_message_text(f"💰 Enter amount to {verb} `{target_id}`'s balance:", parse_mode=ParseMode.MARKDOWN)
         return
 
     # User orders
@@ -1626,7 +1626,7 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         target_id = int(data.replace("msg_user_", ""))
         context.user_data["personal_msg_target"] = target_id
         context.user_data["admin_step"]          = "personal_msg_text"
-        await query.edit_message_text(f"тЬЙя╕П Enter message to send to `{target_id}`:", parse_mode=ParseMode.MARKDOWN)
+        await query.edit_message_text(f"✉️ Enter message to send to `{target_id}`:", parse_mode=ParseMode.MARKDOWN)
         return
 
     # Download users
@@ -1642,24 +1642,24 @@ async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if data == "set_bkash":
         if not is_admin(uid): return
         context.user_data["admin_step"] = "set_bkash"
-        await query.edit_message_text("ЁЯТЪ Enter new bKash number:")
+        await query.edit_message_text("💚 Enter new bKash number:")
         return
 
     if data == "set_nagad":
         if not is_admin(uid): return
         context.user_data["admin_step"] = "set_nagad"
-        await query.edit_message_text("ЁЯЯа Enter new Nagad number:")
+        await query.edit_message_text("🟠 Enter new Nagad number:")
         return
 
     if data == "set_commission":
         if not is_admin(uid): return
         context.user_data["admin_step"] = "set_commission"
-        await query.edit_message_text("ЁЯОБ Enter commission percentage (0тАУ100):")
+        await query.edit_message_text("🎁 Enter commission percentage (0–100):")
         return
 
 
 # ============================================================
-# ЁЯЪА MAIN
+# 🚀 MAIN
 # ============================================================
 
 logging.basicConfig(
@@ -1674,7 +1674,7 @@ def main():
     app.add_handler(CommandHandler("admin", show_admin_panel))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_text))
     app.add_handler(CallbackQueryHandler(handle_callback))
-    logging.info("ЁЯЪА SpyX Bot started!")
+    logging.info("🚀 SpyX Bot started!")
     app.run_polling(drop_pending_updates=True)
 
 if __name__ == "__main__":
