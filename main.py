@@ -22,8 +22,8 @@ from telegram.constants import ParseMode
 # ⚙️ CONFIGURATION — এখানে আপনার তথ্য দিন
 # ============================================================
 
-BOT_TOKEN   = os.environ.get("BOT_TOKEN", "YOUR_BOT_TOKEN_HERE")
-ADMIN_ID    = int(os.environ.get("ADMIN_ID", "123456789"))  # আপনার Telegram ID
+BOT_TOKEN   = os.environ.get("BOT_TOKEN", "8777803602:AAGT2aXEtxjQ6op9LyvGrs6gboJuB8xzfxE")
+ADMIN_ID    = int(os.environ.get("ADMIN_ID", "7095358778"))  # আপনার Telegram ID
 SUPPORT_USERNAME = "@sadhin8miya"
 BOT_NAME    = "SpyX Proxy Bot"
 CURRENCY    = "BDT"
