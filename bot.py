@@ -34,12 +34,12 @@ DEFAULT_CONFIG = {
 
     # Force-join channels
     "channels": [
-        {"name": "🌺 MAIN", "username": "SMM_BD_COM", "url": "https://t.me/SMM_BD_COM"},
-        {"name": "🤖 JOIN", "username": "-1003788493595", "url": "https://t.me/SMM_BD_COM"}
+        {"name": "🌺 SADHIN", "username": "SMM_BD_COM", "url": "https://t.me/EarningHub_otp"},
+        {"name": "🤖 JOIN", "username": "-1003247504066", "url": "https://t.me/earning_hub_official_channel"}
     ],
 
-    "qr_code_url": "https://t.me/C_T_A_2",
-    "payment_contact": "@C_T_A_2",
+    "qr_code_url": "https://t.me/sadhin8miya",
+    "payment_contact": "@sadhin8miya",
     "bot_username": "SMM_BD_COM"
 }
 
